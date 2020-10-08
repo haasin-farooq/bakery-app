@@ -24,19 +24,15 @@ const SignIn = () => {
     }
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col s12 m6">
-                    <div className="card">
-                        <div className="card-content">
-                            <span className="card-title">Welcome!</span>
-                        </div>
-                        <div className="card-action">
-                            <button className="waves-effect red darken-2 btn" onClick={signInWithGoogle}>
-                                <i className="fab fa-google"></i> Sign in with Google
-                            </button>
-                        </div>
-                    </div>
+        <div className="container card-container">
+            <div className="card">
+                <div className="card-content">
+                    <span className="card-title">Welcome!</span>
+                </div>
+                <div className="card-action">
+                    <button className="waves-effect red darken-2 btn" onClick={signInWithGoogle}>
+                        <i className="fab fa-google"></i> Sign in with Google
+                    </button>
                 </div>
             </div>
         </div>

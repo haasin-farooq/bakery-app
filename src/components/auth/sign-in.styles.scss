@@ -1,12 +1,18 @@
-.container {
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin: 200px auto;
 
     .card {
+        display: inline-block;
         background-color: #FFEFD5;
         text-align: center;
+        width: 40%;
     
         .card-title {
             color: #D32F2F;
             font-size: 35px;
+            padding-top: 20px;
         }
     
         .btn {
