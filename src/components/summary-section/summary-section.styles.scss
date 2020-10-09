@@ -1,10 +1,15 @@
+.summary-section {
+    position: fixed;
+    width: 17vw;
+}
+
 .summary {
-    width: 100%;
     min-height: 40vh;
     display: flex;
     flex-direction: column;
     margin: 40px auto 0;
-    background-color: #FFEFD5	;
+    background-color: #FFEFD5;
+    width: 100%;
 
     .summary-nav {
         display: flex;
@@ -19,13 +24,12 @@
     }
 
     .summary-total {
-        display: flex;
-        justify-content: flex-end;
-        align-self: flex-end;
+        text-align: right;
     }
 }
 
 .btn {
     display: flex;
     margin: 20px auto;
+    z-index: 0;
 }

@@ -14,7 +14,7 @@ const Header = () => {
     const clientView = useSelector(state => state.view.clientView);
 
     return (
-        <nav className="nav-wrapper red darken-2">
+        <nav className="nav-wrapper red darken-2 nav-header">
             <div className="container">
                 <Link to='/' className="brand-logo">Bakery App</Link>
                 {

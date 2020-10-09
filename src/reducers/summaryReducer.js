@@ -11,7 +11,7 @@ const summaryReducer = (state = INITIAL_STATE, action) => {
         case CALCULATE_SUMMARY:
             const itemPrice = (action.payload.operator === '+') ? (action.payload.itemPrice * 1) : (action.payload.itemPrice * -1)
             const subTotal = state.subTotal + itemPrice;
-            const tax = subTotal * 0.05;
+            const tax = (Math.round(subTotal * 0.05 * 100) / 100);
             const total = subTotal + tax;
             return {
                 ...state,

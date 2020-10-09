@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { calculateBill } from '../../actions/summaryAction';
-
 import './summary-section.styles.scss';
 
 const SummarySection = () => {
@@ -15,13 +13,13 @@ const SummarySection = () => {
                     <span>Summary</span>
                 </nav>
                 <div className="container">
-                    <p>Subtotal: {subTotal}</p>
-                    <p>Tax: {tax}</p>
-                    <p>Delivery: FREE</p>
-                    <p className="summary-total">Total: {total}</p>
+                    <p><strong>Subtotal:</strong> {subTotal}</p>
+                    <p><strong>Tax:</strong> {tax}</p>
+                    <p><strong>Delivery:</strong> FREE</p>
+                    <p className="summary-total"><strong>Total:</strong> {total}</p>
                 </div>
             </div>
-            <button className="waves-effect red darken-2 btn">Proceed To Checkout</button>
+            <button className="waves-effect red darken-2 btn checkout-button">Proceed To Checkout</button>
         </div>
     )
 }
