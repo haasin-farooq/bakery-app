@@ -4,9 +4,19 @@ import {
     GET_ITEMS
 } from '../actions/actionTypes';
 
-export const addItem = (item) => async (dispatch) => {
+export const addItem = () => async (dispatch, getState) => {
   try {
+    const item = await getState().form.addItemForm.values;
 
+    console.log(item);
+
+    await firestore.collection('items').add({
+      ...item
+    });
+
+    dispatch({
+      type: ADD_ITEM
+    });
   } 
   catch(error) {
     console.log(error);

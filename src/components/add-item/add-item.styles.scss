@@ -1,0 +1,14 @@
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]){
+  border-color: #D32F2F;
+  box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=number]:not(.browser-default):focus:not([readonly]) + label{
+  color: #D32F2F !important;
+}
+
+.add-item-container {
+  margin: 140px auto;
+}

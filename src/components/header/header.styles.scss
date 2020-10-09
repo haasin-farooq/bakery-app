@@ -1,6 +1,8 @@
 .right {
 
-    .item-count {
+    .item-count,
+    .view 
+    {
         font-weight: bold;
         margin-right: 25px;
     
@@ -9,7 +11,9 @@
         }
     }
 
-    .signout-button {
+    .signout-button,
+    .change-view-button 
+    {
         display: block;
         margin: 15px auto 0;
     }

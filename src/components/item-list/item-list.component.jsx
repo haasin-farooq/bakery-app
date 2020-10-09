@@ -19,7 +19,7 @@ const ItemList = () => {
             <ul>
                 {
                     items && // If there are any items, then map them after &&. Otherwise don't.
-                    items.map((item) => <Item key={item.id} title={item.title} price={item.price} />)
+                    items.map((item) => <Item key={item.id} title={item.title} price={item.price} imageUrl={item.imageUrl} />)
                 }
             </ul>
         </div>

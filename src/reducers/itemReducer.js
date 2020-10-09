@@ -7,6 +7,7 @@ const INITIAL_STATE = {
 const itemReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case ADD_ITEM:
+            alert("Item added!");
             return state;
         case GET_ITEMS:
             return {

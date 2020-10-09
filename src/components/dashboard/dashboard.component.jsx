@@ -8,7 +8,7 @@ import SummarySection from '../summary-section/summary-section.component';
 const Dashboard = () => {
     const state = useSelector(state => state.firebase.auth)
     if(!state.uid) {
-        return <Redirect to='/signin' />
+        return <Redirect to='/' />
     }
     return (
         <div className="dashboard container">

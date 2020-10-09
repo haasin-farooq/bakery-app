@@ -9,9 +9,14 @@ import './sign-in.styles.scss';
 const SignIn = () => {
     const dispatch = useDispatch();
     const state = useSelector(state => state.firebase.auth);
+    const clientView = useSelector(state => state.view.clientView);
 
     if(state.uid) {
-        return <Redirect to='/' />
+        return <Redirect to='/dashboard' />
+    }
+
+    if(!clientView) {
+        return <Redirect to='/additem' />
     }
 
     return (

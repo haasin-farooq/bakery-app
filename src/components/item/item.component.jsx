@@ -6,9 +6,7 @@ import { calculateSubtotal } from '../../actions/summaryAction';
 
 import './item.styles.scss';
 
-import item from '../../images/oreo.jpg';
-
-const Item = ({ title, price }) => {
+const Item = ({ title, price, imageUrl }) => {
     const [quantity, setQuantity] = useState(0);
     const [itemTotal, setItemTotal] = useState(0);
     
@@ -39,7 +37,7 @@ const Item = ({ title, price }) => {
     return (
         <li className="item section">
             <div className="image-container">
-                <img src={item} alt="item.png"/>
+                <img src={imageUrl} alt="item.png"/>
             </div>
             <span className="name">{title}</span>
             <span className="price">{price}</span>
