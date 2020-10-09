@@ -1,4 +1,4 @@
-import { CALCULATE_SUBTOTAL, CALCULATE_BILL } from '../actions/actionTypes';
+import { CALCULATE_SUMMARY } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
     subTotal: 0,
@@ -8,18 +8,16 @@ const INITIAL_STATE = {
 
 const summaryReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
-        case CALCULATE_SUBTOTAL:
-            state.subTotal = state.subTotal - action.payload.prevItemTotal;
+        case CALCULATE_SUMMARY:
+            const itemPrice = (action.payload.operator === '+') ? (action.payload.itemPrice * 1) : (action.payload.itemPrice * -1)
+            const subTotal = state.subTotal + itemPrice;
+            const tax = subTotal * 0.05;
+            const total = subTotal + tax;
             return {
                 ...state,
-                subTotal: state.subTotal + action.payload.itemTotal
-            }
-        case CALCULATE_BILL:
-            return {
-                ...state,
-                subTotal: action.payload.subTotal,
-                tax: action.payload.tax,
-                total: action.payload.total
+                subTotal,
+                tax,
+                total
             }
         default:
             return state;

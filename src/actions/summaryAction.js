@@ -1,26 +1,11 @@
-import { CALCULATE_SUBTOTAL, CALCULATE_BILL } from './actionTypes';
+import { CALCULATE_SUMMARY } from './actionTypes';
 
-export const calculateSubtotal = (prevItemTotal, itemTotal) => {
-    console.log('prevItemTotal: ', prevItemTotal);
-    console.log('itemTotal: ', itemTotal);
+export const calculateSummary = (itemPrice, operator) => {
     return {
-        type: CALCULATE_SUBTOTAL,
+        type: CALCULATE_SUMMARY,
         payload: {
-            prevItemTotal,
-            itemTotal
-        }
-    }
-}
-
-export const calculateBill = (subTotal) => {
-    const tax = subTotal * 0.05; // assuming a 5% tax
-    const total = subTotal + tax;
-    return {
-        type: CALCULATE_BILL,
-        payload: {
-            subTotal,
-            tax,
-            total
+            operator,
+            itemPrice
         }
     }
 }

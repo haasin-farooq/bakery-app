@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { incrementCartQuantity, decrementCartQuantity } from '../../actions/cartAction';
-import { calculateSubtotal } from '../../actions/summaryAction';
+import { calculateSummary } from '../../actions/summaryAction';
 
 import './item.styles.scss';
 
@@ -18,6 +18,7 @@ const Item = ({ title, price, imageUrl }) => {
         setQuantity(quantity + 1);
         setItemTotal((quantity + 1) * price);
         dispatch(incrementCartQuantity());
+        dispatch(calculateSummary(price, '+'));
     }
 
     const decrementQuantity = (e) => {
@@ -27,6 +28,7 @@ const Item = ({ title, price, imageUrl }) => {
             setQuantity(quantity - 1);
             setItemTotal((quantity - 1) * price);
             dispatch(decrementCartQuantity());
+            dispatch(calculateSummary(price, '-'));
          } 
          else {
             setQuantity(0);

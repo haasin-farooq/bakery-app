@@ -6,12 +6,7 @@ import { calculateBill } from '../../actions/summaryAction';
 import './summary-section.styles.scss';
 
 const SummarySection = () => {
-    const bill = useSelector(state => state.summary)
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(calculateBill(bill.subTotal));
-    }, [dispatch]);
+    const { subTotal, tax, total } = useSelector(state => state.summary)
 
     return (
         <div className="summary-section">
@@ -20,10 +15,10 @@ const SummarySection = () => {
                     <span>Summary</span>
                 </nav>
                 <div className="container">
-                    <p>Subtotal: {bill.subTotal}</p>
-                    <p>Tax: {bill.tax}</p>
+                    <p>Subtotal: {subTotal}</p>
+                    <p>Tax: {tax}</p>
                     <p>Delivery: FREE</p>
-                    <p className="summary-total">Total: {bill.total}</p>
+                    <p className="summary-total">Total: {total}</p>
                 </div>
             </div>
             <button className="waves-effect red darken-2 btn">Proceed To Checkout</button>
