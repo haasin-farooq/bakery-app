@@ -1,22 +1,18 @@
-import React, { useReducer, useEffect } from 'react';
-import { connect } from 'react-redux';
-
-import { auth, firestore } from '../../firebase/firebaseConfig';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Item from '../item/item.component';
-import itemReducer from '../../reducers/itemReducer';
+import { getItems } from '../../actions/itemAction';
 
-const ItemList = ({ items }) => {
-    // const [items, dispatch] = useReducer(itemReducer);
-    console.log(items);
+const ItemList = () => {
+    const dispatch = useDispatch();
+    const items = useSelector(state => state.item.items);
 
     useEffect(() => {
-        firestore.collection('items').get()
-        .then(snapshot => {
-            console.log(snapshot.data());
-        })
-        .catch(error => console.log(error));
-    }, [items]);
+        dispatch(getItems());
+    }, [dispatch]);
+
+    console.log(items);
 
     return (
         <div className="item-list section">
@@ -30,10 +26,4 @@ const ItemList = ({ items }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        items: state.item.items
-    }
-}
-
-export default connect(mapStateToProps)(ItemList);
+export default ItemList;

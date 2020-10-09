@@ -1,25 +1,16 @@
-import React, { useState, useEffect } from 'react';
-
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { signInWithGoogle, auth } from '../../firebase/firebaseConfig';
+import { signInWithGoogle } from '../../actions/authAction';
 
 import './sign-in.styles.scss';
 
 const SignIn = () => {
-    const [currentUser, setCurrentUser] = useState(null);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state.firebase.auth);
 
-    useEffect(() => {
-        auth.onAuthStateChanged(user => {
-            setCurrentUser(user);
-
-            console.log(user);
-        });
-    }, [currentUser]);
-
-    console.log(auth.uid);
-
-    if(currentUser) {
+    if(state.uid) {
         return <Redirect to='/' />
     }
 
@@ -30,7 +21,7 @@ const SignIn = () => {
                     <span className="card-title">Welcome!</span>
                 </div>
                 <div className="card-action">
-                    <button className="waves-effect red darken-2 btn" onClick={signInWithGoogle}>
+                    <button className="waves-effect red darken-2 btn" onClick={() => dispatch(signInWithGoogle())}>
                         <i className="fab fa-google"></i> Sign in with Google
                     </button>
                 </div>

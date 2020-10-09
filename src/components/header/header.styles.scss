@@ -1,7 +1,16 @@
-.item-count {
-    font-weight: bold;
+.right {
 
-    .fa-shopping-cart {
-        margin-right: 10px;
+    .item-count {
+        font-weight: bold;
+        margin-right: 25px;
+    
+        .fa-shopping-cart {
+            margin-right: 10px;
+        }
+    }
+
+    .signout-button {
+        display: block;
+        margin: 15px auto 0;
     }
 }

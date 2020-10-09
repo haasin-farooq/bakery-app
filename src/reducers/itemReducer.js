@@ -1,25 +1,21 @@
+import { ADD_ITEM, GET_ITEMS } from '../actions/actionTypes';
+
 const INITIAL_STATE = {
-    items: [
-        {
-            id: '1',
-            title: 'Item 1',
-            price: 10
-        },
-        {
-            id: '2',
-            title: 'Item 2',
-            price: 20
-        },
-        {
-            id: '3',
-            title: 'Item 3',
-            price: 30
-        }
-    ]
+    items: []
 }
 
 const itemReducer = (state = INITIAL_STATE, action) => {
-    return state;
+    switch(action.type) {
+        case ADD_ITEM:
+            return state;
+        case GET_ITEMS:
+            return {
+                ...state,
+                items: action.payload
+            }
+        default:
+            return state;
+    }
 }
 
 export default itemReducer;

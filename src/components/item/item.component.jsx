@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { incrementCartQuantity, decrementCartQuantity } from '../../actions/cartAction';
+import { calculateSubtotal } from '../../actions/summaryAction';
 
 import './item.styles.scss';
 
 import item from '../../images/oreo.jpg';
 
 const Item = ({ title, price }) => {
+    const [quantity, setQuantity] = useState(0);
+    const [itemTotal, setItemTotal] = useState(0);
+    
+    const dispatch = useDispatch();
+
+    const incrementQuantity = (e) => {
+        e.preventDefault();
+
+        setQuantity(quantity + 1);
+        setItemTotal((quantity + 1) * price);
+        dispatch(incrementCartQuantity());
+    }
+
+    const decrementQuantity = (e) => {
+        e.preventDefault();
+
+        if(quantity > 0) {
+            setQuantity(quantity - 1);
+            setItemTotal((quantity - 1) * price);
+            dispatch(decrementCartQuantity());
+         } 
+         else {
+            setQuantity(0);
+            setItemTotal(0);
+         }
+    }
+
     return (
         <li className="item section">
             <div className="image-container">
@@ -13,11 +44,11 @@ const Item = ({ title, price }) => {
             <span className="name">{title}</span>
             <span className="price">{price}</span>
             <span className="quantity">
-                <div className="arrow">&#10094;</div>
-                <span className="value">2</span>
-                <div className="arrow">&#10095;</div>
+                <div className="arrow" onClick={decrementQuantity}>&#10094;</div>
+                <span className="value">{quantity}</span>
+                <div className="arrow" onClick={incrementQuantity}>&#10095;</div>
             </span>
-            <span className="item-total">100</span>
+            <span className="item-total">{itemTotal}</span>
         </li>
     )
 }
